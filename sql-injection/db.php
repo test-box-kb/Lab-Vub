@@ -9,24 +9,25 @@ if ($conn -> connect_error){
     die("Connection Failed: ".$conn->connect_error);
 }
 
-function getAllphone(mysqli $conn)
+function getAllPhone(mysqli $conn)
 {
-    $query = "SELECT id, name, brand, price FROM phone";
+    $sql = "SELECT id, name, brand, price FROM phone";
+    $result = mysqli_query($conn, $sql);
     $data = [];
-    $result = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
+        $data[] = $row;
     }
-    return $data ;
+    return $data;
 }
 
-function searchPhone(mysqli $conn, string $keyword)
+function searchPhoneLevel0(mysqli $conn, string $keyword)
 {
-    $query = "SELECT id, name, brand, price FROM phone WHERE name LIKE '%$keyword%'";
+    $sql = "SELECT id, name, brand, price FROM phone WHERE name LIKE '%$keyword%' OR brand LIKE '%$keyword%' OR price LIKE '%$keyword%'";
+    $result = mysqli_query($conn, $sql);
     $data = [];
-    $result = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
+        $data[] = $row;
     }
+    return $data;
 }
 ?>

@@ -1,5 +1,21 @@
 <?php
-session_start();
+require "db.php";
+$data = [];
+$data = getAllPhone($conn);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $keyword = $_POST["search"] ?? "";
+    $level = (int)($_POST["level"]);
+    switch ($level) {
+        case 0:
+            $data = searchPhoneLevel0($conn, $keyword);
+            break;
+        default:
+            $data = getAllPhone($conn);
+    }
+}
+else{
+    $data = getAllPhone($conn);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,27 +28,22 @@ session_start();
         </style>
     </head>
     <body>
-    <?php for($i=0; $i <5; $i++) {?>
-    <form action="sql-injection.php" method="POST">
-    <h2>SQL-Injection level <?php echo $i ?></h2>
-    <input type="hidden" name="level" value="<?php echo $i ?>" >
-    <label class="search">Search data: </label>
-    <input type="text" name="search" placeholder="search...">
-    <button type="submit"> submit</button>
-    </form>
-    <?php
-    
-        foreach ($_SESSION['result'] as $row) { ?>
-            <label><b>Name:</b> <b><?= $row['name'] ?></b></label>
-            <label> <b>Brand: </b><?= $row['brand'] ?></label>
-            <label><b>Price:</b> <?= $row['price'] ?></label>
-            <br>
-    <?php
-        }
-            unset($_SESSION['result']);
-    ?>
-    <?php
-    }
-    ?>
+        <?php for($i=0; $i <5;$i++){ ?>
+            <h3>SQL INJECTION LEVEL <?= $i ?></h3>
+<form method="POST">
+    <input type="hidden" name="level" value=" <?= $i ?> ">
+    <input type="text" name="search" placeholder="Search phone">
+    <button>
+        Search
+    </button>
+</form>
+<?php if(isset($_POST["level"])&& $_POST["level"]==$i){
+    foreach ($data as $row) { ?>
+<p>
+<b><?= $row["name"] ?></b>
+<?= $row["brand"] ?>
+<?= $row["price"] ?>
+</p>
+<?php }}} ?>
     </body>
 </html>
