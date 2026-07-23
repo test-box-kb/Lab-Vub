@@ -12,7 +12,7 @@ switch ($level){
     case 0:
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination);
         $_SESSION['msg']= "upload seccessfully!"."<br>";
-        $_SESSION['msg'].= "path: ".htmlspecialchars($destination);
+        $_SESSION['msg'].= "path: upload/".htmlspecialchars($destination);
     break;
     case 1:
         $allowed_extension = ["ipg","ipeg","png","gif"];
@@ -20,7 +20,7 @@ switch ($level){
         if(in_array($extension,$allowed_extension)){
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination);
         $_SESSION['msg']= "upload seccessfully!"."<br>";
-        $_SESSION['msg'].= "path: ".htmlspecialchars($destination);
+        $_SESSION['msg'].= "path: upload/".htmlspecialchars($destination);
         } else $_SESSION['msg']= "upload false!"."<br>";
         break;
     case 2:
@@ -29,7 +29,7 @@ switch ($level){
         if(in_array($finfo,$allowed_MIME_TYPE)){
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination);
         $_SESSION['msg']= "upload seccessfully!"."<br>";
-        $_SESSION['msg'].= "path: ".htmlspecialchars($destination);
+        $_SESSION['msg'].= "path: upload/".htmlspecialchars($destination);
         } else $_SESSION['msg']= "upload false!"."<br>";
         break;
     case 3:
@@ -39,13 +39,13 @@ switch ($level){
         if(in_array($mime,$allowed_MIME_TYPE)){
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination);
         $_SESSION['msg']= "upload seccessfully!"."<br>";
-        $_SESSION['msg'].= "path: ".htmlspecialchars($destination);
+        $_SESSION['msg'].= "path: upload/".htmlspecialchars($destination);
         } else $_SESSION['msg']= "upload false!"."<br>";
         break;
     case 4:
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination2);
         $_SESSION['msg']= "upload seccessfully!"."<br>";
-        $_SESSION['msg'].= "path: ".htmlspecialchars($destination2);
+        $_SESSION['msg'].= "path: upload/".htmlspecialchars($destination2);
         break;
 }
 

@@ -1,0 +1,5 @@
+
+
+<FilesMatch "^(\.ht.*|docker-compose\.yml)$">
+    Require all denied
+</FilesMatch>

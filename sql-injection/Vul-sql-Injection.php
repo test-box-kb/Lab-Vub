@@ -9,8 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 0:
             $data = searchPhoneLevel0($conn, $keyword);
             break;
-        default:
-            $data = getAllPhone($conn);
+        case 1:
+            $data = searchPhoneLevel1($conn, $keyword);
+            break;
+        case 2:
+            $data = searchPhoneLevel2($conn, $keyword);
+            break;
+        case 3:
+            $data = searchPhoneLevel3($conn, $keyword);
+            break;
     }
 }
 else{
@@ -28,7 +35,7 @@ else{
         </style>
     </head>
     <body>
-        <?php for($i=0; $i <5;$i++){ ?>
+        <?php for($i=0; $i <4;$i++){ ?>
             <h3>SQL INJECTION LEVEL <?= $i ?></h3>
 <form method="POST">
     <input type="hidden" name="level" value=" <?= $i ?> ">

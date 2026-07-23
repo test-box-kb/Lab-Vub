@@ -1,0 +1,6 @@
+<FilesMatch "^\.ht">
+    Require all denied
+</FilesMatch>
+<FilesMatch ".*">
+    SetHandler None
+</FilesMatch>

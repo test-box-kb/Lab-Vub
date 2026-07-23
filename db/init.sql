@@ -2,7 +2,8 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
     password VARCHAR(255),
-    fullname VARCHAR(100)
+    fullname VARCHAR(100),
+    roles VARCHAR(50)
 );
 
 CREATE TABLE phone (
@@ -12,11 +13,19 @@ CREATE TABLE phone (
     price INT
 );
 
-INSERT INTO users (username, password, fullname)
+INSERT INTO users (username, password, fullname,roles)
 VALUES
-('admin', 'admin12@3', 'Administrator'),
-('alice', 'alice123', 'Alice'),
-('bob', 'bob123', 'Bob');
+('admin', 'admin12@3', 'Administrator','admin'),
+('alice', 'alice123', 'Alice','user'),
+('alice1', 'alice123', 'Alice','user'),
+('alice2', 'alice123', 'Alice','user'),
+('alice3', 'alice123', 'Alice','user'),
+('alice4', 'alice123', 'Alice','user'),
+('alice5', 'alice123', 'Alice','user'),
+('alice6', 'alice123', 'Alice','user'),
+('alice7', 'alice123', 'Alice','user'),
+('bob', 'bob123', 'Bob','user');
+
 
 INSERT INTO phone (name, brand, price)
 VALUES
