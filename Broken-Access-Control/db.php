@@ -40,7 +40,7 @@ function login(mysqli $conn, string $username, string $passwd)
     }
 function Delete_user(mysqli $conn, int $id)
 {
-    $sql = "DELETE FROM user WHERE id = ?";
+    $sql = "DELETE FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
     die($conn->error);

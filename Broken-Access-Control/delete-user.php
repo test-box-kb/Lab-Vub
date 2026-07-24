@@ -1,8 +1,13 @@
 <?php
 session_start();
 require 'db.php';
-$id = $_GET['id'];
-Delete_user($conn, $id);
-header("Location: dashboard.php");
-exit;
-?>
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $id = $_POST['id'];
+
+    Delete_user($conn, $id);
+
+    header("Location: Admin.php");
+    exit;
+}
